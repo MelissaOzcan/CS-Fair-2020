@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class file {
+    
+    private String word;
+    private String def;
+    
+    public Card() {
+        word = null;
+        def = null;
+    }
+    
+    public Card(String w, String d) {
+        word = w;
+        def = d;
+    }
+    
+    public static void main(String[] args) {
+    
+    }
+}
