@@ -16,6 +16,8 @@ public class file {
     }
     
     public static void main(String[] args) {
-    
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the number of cards as an integer value.");
+        int length = in.nextInt();
     }
 }
