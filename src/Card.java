@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Card {
     
     private String word;
@@ -10,14 +8,24 @@ public class Card {
         def = null;
     }
     
+    //for testing
     public Card(String w, String d) {
         word = w;
         def = d;
     }
     
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter the number of cards as an integer value.");
-        int length = in.nextInt();
+    // this is useful for initialization
+    public Card(String s) {
+        String[] values = s.split(":");
+        word = values[0];
+        def = values[1];
+    }
+    
+    public String getWord() {
+        return word;
+    }
+    
+    public String getDef() {
+        return def;
     }
 }
