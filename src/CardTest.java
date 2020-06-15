@@ -1,3 +1,9 @@
+/**
+ * There was a recurring issue with accepting inputs for the cards,
+ * so I made this tester file. The issue was that the strings were
+ * storing as %s<String></String> .
+ * **/
+
 public class CardTest {
     public static void main(String[] args) {
         /*
