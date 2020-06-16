@@ -1,7 +1,7 @@
 /**
  * Created by Melissa Ozcan on 6/11/20
  * This version of the program prints out to the console,
- * instead of using a GUI.
+ * instead of using a GUI. (Level 1)
  */
 
 import java.util.ArrayList;
