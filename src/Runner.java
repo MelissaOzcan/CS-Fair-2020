@@ -1,19 +1,16 @@
-/**
+package src; /**
 * THIS IS AN OLD VERSION OF THE PROGRAM
 * NO LONGER IN USE
 **/
 
-import org.w3c.dom.ls.LSOutput;
+import src.Console.Card;
 
-import javax.print.attribute.IntegerSyntax;
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -55,7 +52,7 @@ public class Runner extends Frame implements ActionListener {
         
         JTextField input = new JTextField(); //this is where the user inputs the number
         panelNumOfCards.add(input);
-    
+    /*
         //https://stackoverflow.com/questions/4419667/detect-enter-press-in-jtextfield
         input.addKeyListener(new KeyAdapter() {
             @Override
@@ -72,7 +69,7 @@ public class Runner extends Frame implements ActionListener {
             }
         });
         frame.setVisible(true);
-        
+        */
         
               
         

@@ -1,32 +1,51 @@
-/**
- * Written by Melissa Ozcan in 06/2020
- */
+package src;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Objects;
 import javax.swing.*;
 
+// Written by Melissa Ozcan in 6/2020
+
 public class FlashCardsRunner {
-    private JPanel contentPane;
-    private MyPanel panel1;
-    private MyPanel2 panel2;
-    private MyPanel3 panel3;
+    private JPanel contentPane;         // each page is its own class
+    private MyPanel introPanel;         // asks for # of cards
+    private MyPanel2 setUpCards;        // input card info
+    private MyPanel3 beginLearning;     // card review
+    private JFrame frame;
     
     private void displayGUI() {
-        JFrame frame = new JFrame("Console.Card Layout Example");
+        frame = new JFrame("Flash Cards");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         JPanel contentPane = new JPanel();
         contentPane.setBorder(
                 BorderFactory.createEmptyBorder(5, 5, 5, 5));
         contentPane.setLayout(new CardLayout());
-        panel1 = new MyPanel(contentPane);
-        panel2 = new MyPanel2(contentPane);
-        panel3 = new MyPanel3(contentPane);
-        contentPane.add(panel1, "Panel 1");
-        contentPane.add(panel2, "Panel 2");
-        contentPane.add(panel3, "Panel 3");
+        introPanel = new MyPanel(contentPane);
+        setUpCards = new MyPanel2(contentPane);
+        beginLearning = new MyPanel3(contentPane);
+        contentPane.add(introPanel, "Panel 1");
+        contentPane.add(setUpCards, "Panel 2");
+        contentPane.add(beginLearning, "Panel 3");
+        
+        Component[] components = contentPane.getComponents();
+        contentPane.removeAll();
+        
+        Component temp = components[components.length - 2];
+        components[components.length - 2] = components[1];
+        components[1] = temp;
+        
+        temp = components[components.length - 3];
+        components[components.length - 3] = components[0];
+        components[0] = temp;
+        
+        
+        for (int i = components.length - 1; i > 0; i--) {
+            contentPane.add(components[i]);
+        }
+     
+        contentPane.validate();
         frame.setContentPane(contentPane);
         frame.pack();
         frame.setLocationByPlatform(true);
@@ -46,35 +65,32 @@ public class FlashCardsRunner {
 
 
 //asks for # of cards
-class MyPanel extends JPanel
-{
+class MyPanel extends JPanel {
     private JButton jcomp4;
     private JPanel contentPane;
     private JComboBox cardNum;
-    private int numOfCards;
+    private final int[] numOfCards = new int[1];
     private JLabel lbl;
     
-    public MyPanel(JPanel panel)
-    {
+    public MyPanel(JPanel panel) {
         contentPane = panel;
         setOpaque(true);
-        setBackground(Color.PINK);
-        
+        setBackground(Color.PINK); //the colors serve no purpose, just easier to distinguish
         
         lbl = new JLabel("Select how many cards you would like to work with.");
         add(lbl);
-    
+        
         String[] numbers = {"5", "10", "15", "20"};
         cardNum = new JComboBox(numbers);
         cardNum.addActionListener(new ActionListener() {
             @Override       // nothing will appear on the panel unless it has an ActionListener
             public void actionPerformed(ActionEvent e) {
-        
+            
             }
         });
         add(cardNum);
         
-        numOfCards = Integer.parseInt((String)Objects.requireNonNull(cardNum.getSelectedItem()));
+        numOfCards[0] = Integer.parseInt((String)Objects.requireNonNull(cardNum.getSelectedItem()));
         
         jcomp4 = new JButton ("Next Page");
         jcomp4.addActionListener( new ActionListener() {
@@ -93,7 +109,7 @@ class MyPanel extends JPanel
     }
     
     public int getNumOfCards() {
-        return numOfCards;
+        return numOfCards[0];
     }
 }
 
@@ -101,19 +117,25 @@ class MyPanel extends JPanel
 //inputting card info
 class MyPanel2 extends JPanel {
     
+    private int numOfCards = 1;     //ideally, this would be whatever value from the last panel
     private JButton jcomp1;
     private JPanel contentPane;
-    
-    public MyPanel2(JPanel panel)
-    {
+
+   
+    public MyPanel2(JPanel panel) {
         contentPane = panel;
         
         setOpaque(true);
         setBackground(Color.ORANGE);
         
-        for (int i = 0; i < 5; i++) {
-            
+        MyPanel3[] deck = new MyPanel3[numOfCards];
+        
+        // the following lines are taken from displayGUI()
+        for (int i = 0; i < numOfCards; i++) {
+            deck[i] = new MyPanel3(contentPane);
+            contentPane.add(deck[i], ("Card " + (i + 1)));
         }
+        
         
         //construct components
         jcomp1 = new JButton ("Begin Learning");
@@ -138,21 +160,19 @@ class MyPanel2 extends JPanel {
 
 
 // where the actual cards start
-class MyPanel3 extends JPanel
-{
+class MyPanel3 extends JPanel {
     
     private JButton jcomp1;
     private JPanel contentPane;
     
-    public MyPanel3(JPanel panel)
-    {
+    public MyPanel3(JPanel panel) {
         contentPane = panel;
         
         setOpaque(true);
         setBackground(Color.YELLOW);
         
         //construct components
-        jcomp1 = new JButton ("Next Console.Card");
+        jcomp1 = new JButton ("Next");
         jcomp1.addActionListener( new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
