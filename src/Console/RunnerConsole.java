@@ -1,8 +1,10 @@
-/**
+package src.Console; /**
  * Created by Melissa Ozcan on 6/11/20
  * This version of the program prints out to the console,
  * instead of using a GUI. (Level 1)
  */
+
+import src.Console.Card;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -39,8 +41,7 @@ public class RunnerConsole{
         ArrayList<Card> deck = deck();
         
         System.out.println("You will now begin the study session. " +
-                "At any time, type 'quit' to quit." +
-                "To see the right answer, type in 'right answer'\n");
+                "At any time, type 'quit' to quit.\n");
         
         String input = "";
         int i = 0;

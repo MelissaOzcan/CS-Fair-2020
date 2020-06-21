@@ -1,3 +1,5 @@
+package src.Console;
+
 /**
  * There was a recurring issue with accepting inputs for the cards,
  * so I made this tester file. The issue was that the strings were

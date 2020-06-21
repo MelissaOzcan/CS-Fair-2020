@@ -1,3 +1,5 @@
+package src.Console;
+
 public class Card {
     
     private String word;
