@@ -6,6 +6,7 @@ import java.util.Objects;
 import javax.swing.*;
 
 // Written by Melissa Ozcan in 6/2020
+// Last update : 6/21/20
 
 public class FlashCardsRunner {
     private JPanel contentPane;         // each page is its own class
