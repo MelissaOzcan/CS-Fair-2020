@@ -1,5 +1,8 @@
 package src.Console;
 
+// Made by Melissa Ozcan
+// Last worked: 6/24/20
+
 public class Card {
     
     private String word;
